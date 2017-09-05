@@ -1,34 +1,48 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "adminMode.h"
-#include "employeeMode.h"
-
 using namespace std;
 
 int main() {
-
+	
+//	cout << adminMode.getNum() << endl;
+//	string x = "hello";
+//	adminMode adminMode;
 	cout << "Welcome to Employee Database" << endl
-		<< "Select User type" << endl 
-		<< "1. Admin\n2. Employee\n3. Exit";
-	int selection = 0;
-	cin >> selection;
+		<< "Select User type" << endl
+		<< "1. Admin\n2. Employee\n3. Exit" << endl;
+	string selection;
+	getline(cin, selection);
 	string adminPassword;
 	string employeePassword;
-	int adminSelection;
+	string adminSelection;
 	int employeeID = 0;
-
-	if (selection == 1) {
-		cout << "Enter Admin pw";
+	
+	if (selection == "1") {
+		cout << "Enter Admin pw" << endl;
 		getline(cin, adminPassword);
-
-		cout << "1. List of Employees\n2. Add New Employee\n3. Edit Existing Employee\n4. Terminate Employee";
-		if (selection == 1) {
+		cout << endl << "1. List of Employees\n2. Add New Employee\n3. Edit Existing Employee\n4. Terminate Employee";
+		
+		getline(cin, adminSelection);
+		cout << adminPassword << " " << adminSelection;
+		cin.get();
+		if (adminSelection == "1") {
 
 		}
-		else if (selection == 2) {
+		else if (selection == "2") {
+		
+			int id = 0;
 
-		}
+			cout << "New Employee ID: " << id << endl; 
+
+			cout << "Enter First Name" << endl;
+
+			cout << "Enter Last Name" << endl;
+
+			cout << "Enter email address" << endl;
+
+			cout << "Enter phone number" << endl;
+		}/*
 		else if (selection == 3) {
 
 		}
@@ -36,14 +50,15 @@ int main() {
 
 		}
 		else if (selection == 5) {
-
-		} else {
+			
+		} */else {
 		
 		}
 
 
 	}
-	else if (selection == 2) {
+	else if (selection == "2") {
+		
 		cout << "Enter Employee ID" << endl;
 		cin >> employeeID;
 		cout << "Enter Employee Password" << endl;
@@ -53,7 +68,7 @@ int main() {
 	}
 
 
-	cin.get();
+	
 
 	return 0;
 }
