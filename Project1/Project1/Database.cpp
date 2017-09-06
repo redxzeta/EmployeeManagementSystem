@@ -1,13 +1,22 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <sstream>
 using namespace std;
+
+struct adminMode {
+	int id;
+	string firstName;
+	string lastName;
+	string email;
+	string number;
+
+
+};
 
 int main() {
 	
-//	cout << adminMode.getNum() << endl;
-//	string x = "hello";
-//	adminMode adminMode;
+	adminMode adminMode [20];
 	cout << "Welcome to Employee Database" << endl
 		<< "Select User type" << endl
 		<< "1. Admin\n2. Employee\n3. Exit" << endl;
@@ -32,9 +41,10 @@ int main() {
 		else if (selection == "2") {
 		
 			int id = 0;
-
+			string x = "1";
 			cout << "New Employee ID: " << id << endl; 
-
+			adminMode[1].id;
+			
 			cout << "Enter First Name" << endl;
 
 			cout << "Enter Last Name" << endl;
