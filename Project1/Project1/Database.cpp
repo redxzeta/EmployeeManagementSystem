@@ -14,6 +14,8 @@ struct adminMode {
 
 };
 
+void checkNextAvailableID(adminMode adminMode , int &id);
+
 int main() {
 	
 	adminMode adminMode [20];
@@ -31,12 +33,15 @@ int main() {
 		cout << "Enter Admin pw" << endl;
 		getline(cin, adminPassword);
 		cout << endl << "1. List of Employees\n2. Add New Employee\n3. Edit Existing Employee\n4. Terminate Employee";
-		
 		getline(cin, adminSelection);
 		cout << adminPassword << " " << adminSelection;
 		cin.get();
 		if (adminSelection == "1") {
-
+			cout << "ID\tfirstname\tlastname\tEmail\tPhone Number";
+			for (int i = 0; i <= 20; i++) {
+				cout << adminMode[i].id << "\t" << adminMode[i].firstName << "\t" << adminMode[i].lastName
+					<< "\t" << adminMode[i].email << "\t" << adminMode[i].number;
+			}
 		}
 		else if (selection == "2") {
 		
@@ -46,19 +51,33 @@ int main() {
 			adminMode[1].id;
 			
 			cout << "Enter First Name" << endl;
-
+			getline(cin, adminMode[id].firstName);
 			cout << "Enter Last Name" << endl;
-
+			getline(cin, adminMode[id].lastName);
 			cout << "Enter email address" << endl;
-
+			getline(cin, adminMode[id].email);
 			cout << "Enter phone number" << endl;
+			getline(cin, adminMode[id].number);
+		}
+		else if (selection == "3") {
+			int id =0;
+			cout << "Enter existing ID";
+			cin >> id;
+
+			cout << "Enter First Name" << endl;
+			getline(cin, adminMode[id].firstName);
+			cout << "Enter Last Name" << endl;
+			getline(cin, adminMode[id].lastName);
+			cout << "Enter email address" << endl;
+			getline(cin, adminMode[id].email);
+			cout << "Enter phone number" << endl;
+			getline(cin, adminMode[id].number);
+
+			
+		}
+		else if (selection == "4") {
+
 		}/*
-		else if (selection == 3) {
-
-		}
-		else if (selection == 4) {
-
-		}
 		else if (selection == 5) {
 			
 		} */else {
@@ -81,4 +100,10 @@ int main() {
 	
 
 	return 0;
+}
+
+void checkNextAvailableID(adminMode adminMode, int &id) {
+
+
+
 }
