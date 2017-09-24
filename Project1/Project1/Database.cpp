@@ -16,6 +16,8 @@ struct adminMode {
 
 void checkNextAvailableID(adminMode adminMode, int &id);
 
+void assignID(adminMode &adminMode);
+
 int main() {
 
 	adminMode adminMode[20];
@@ -30,6 +32,10 @@ int main() {
 	int employeeID = 0;
 
 	if (selection == "1") {
+		for (int i = 0; i <= 20; i++) {
+
+			adminMode[i].id = i;
+		}
 		int id = 0;
 		cout << "Enter Admin pw" << endl;
 		getline(cin, adminPassword);
@@ -104,4 +110,11 @@ void checkNextAvailableID(adminMode adminMode, int &id) {
 
 
 
+}
+
+void assignID(adminMode &adminMode) {
+
+	
+
+	cout << "whuat";
 }
