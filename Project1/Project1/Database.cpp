@@ -19,8 +19,6 @@ int checkNextAvailableID(adminMode adminMode[], int id);
 
 void assignID(adminMode adminMode[]);
 
-void assignID(adminMode &adminMode);
-
 int main() {
 
 	adminMode adminMode[20];
@@ -36,10 +34,6 @@ int main() {
 	assignID(adminMode);
 
 	if (selection == "1") {
-		for (int i = 0; i <= 20; i++) {
-
-			adminMode[i].id = i;
-		}
 		int id = 0;
 		cout << "Enter Admin pw" << endl;
 		getline(cin, adminPassword);
@@ -118,11 +112,4 @@ void assignID(adminMode adminMode[]) {
 	for (int i = 0; i < 20; i++) {
 		adminMode[i].id = i;
 	}
-}
-
-void assignID(adminMode &adminMode) {
-
-	
-
-	cout << "whuat";
 }
