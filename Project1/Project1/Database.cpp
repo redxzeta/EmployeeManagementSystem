@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include<fstream>
 #include <vector>
 #include <sstream>
 #include <stdlib.h>
@@ -16,9 +17,11 @@ struct adminMode {
 
 };
 
-int checkNextAvailableID(adminMode adminMode[], int id);
+int checkNextAvailableID(struct adminMode adminMode[20], int id);
 
-void assignID(adminMode adminMode[]);
+void assignID(struct adminMode adminMode[20]);
+
+void readFile(string fileName, struct adminMode adminMode[20]);
 
 int main() {
 
@@ -32,25 +35,31 @@ int main() {
 	string employeePassword;
 	string adminSelection;
 	int employeeID = 0;
-	assignID(adminMode);
 
 	if (selection == "1") {
+		readFile("test.txt", adminMode);
 		int id = 0;
 		cout << "Enter Admin pw" << endl;
 		getline(cin, adminPassword);
-		while (adminSelection != "5") {		
+		
+		while (adminSelection != "5") {
 			cout << endl << "1. List of Employees\n2. Add New Employee\n3. Edit Existing Employee\n4. Terminate Employee\n5. Exit" << endl;
 			getline(cin, adminSelection);
 			system("CLS");
+			id = checkNextAvailableID(adminMode, id); cout << id;
 			if (adminSelection == "1") {
-				cout << "ID\tfirstname\tlastname\tEmail\tPhone Number\n";
+				cout << "ID\tfirstname\tlastname\tEmail\t\t\tPhone Number\n";
 				for (int i = 0; i < 20; i++) {
 					cout << adminMode[i].id << "\t" << adminMode[i].firstName << "\t\t" << adminMode[i].lastName
-						<< "\t\t" << adminMode[i].email << "\t" << adminMode[i].number << endl;
+						<< "\t\t" << adminMode[i].email << "\t\t" << adminMode[i].number << endl;
 				}
 			}
+			else if (id == -1) {
+				cout << "No available ID"; cin.get();
+			}
+
 			else if (adminSelection == "2") {
-				id = checkNextAvailableID(adminMode, id);
+				
 				cout << "New Employee ID: " << id << endl;
 				cout << "Enter First Name" << endl;
 				getline(cin, adminMode[id].firstName);
@@ -98,19 +107,29 @@ int main() {
 	return 0;
 }
 
-int checkNextAvailableID(adminMode adminMode[], int id) {
+int checkNextAvailableID(struct adminMode adminMode[20], int id) {
+	id = -1;
 	for (int i = 20; i >= 0; i--) {
 		if (adminMode[i].firstName == "N/A") {
 			id = i;
 		}
 
-	}
 
-	return id;
+	}		return id;
 }
 
-void assignID(adminMode adminMode[]) {
-	for (int i = 0; i < 20; i++) {
-		adminMode[i].id = i;
+void readFile(string fileName, struct adminMode adminMode[20]) {
+
+
+	ifstream myfile(fileName.c_str());
+	for (int i = 0; i < 20; i++)
+	{
+		myfile >> adminMode[i].id;
+		myfile >> adminMode[i].firstName;
+		myfile >> adminMode[i].lastName;
+		myfile >> adminMode[i].email;
+		myfile >> adminMode[i].number;
 	}
+
 }
+
