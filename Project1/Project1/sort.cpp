@@ -7,8 +7,8 @@ sort::sort()
 {
 }
 
-void sort::sortAZ(int x[20]) {
-
+void sort::sortAZ(struct adminMode adminMode[20]) {
+	cout << adminMode[0].firstName;
 }
 
 sort::~sort()

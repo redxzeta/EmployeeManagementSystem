@@ -5,6 +5,6 @@ class sort
 public:
 	sort();
 	~sort();
-	void sortAZ(int x[20]);
+	void sortAZ(struct adminMode adminMode[20]);
 };
 

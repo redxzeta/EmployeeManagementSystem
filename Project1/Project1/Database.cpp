@@ -16,7 +16,8 @@ void readFile(string fileName, struct adminMode adminMode[20]);
 void printDetails(struct adminMode adminMode[]);
 
 int main() {
-
+	sort sort;
+	
 	adminMode adminMode[20];
 	cout << "Welcome to Employee Database" << endl
 		<< "Select User type" << endl
@@ -30,6 +31,7 @@ int main() {
 
 	if (selection == "1") {
 		readFile("test.txt", adminMode);
+		sort.sortAZ(adminMode);
 		int id = 0;
 		cout << "Enter Admin pw" << endl;
 		getline(cin, adminPassword);
