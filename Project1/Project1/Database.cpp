@@ -22,8 +22,6 @@ void assignID(adminMode adminMode[]);
 
 int main() {
 
-	if ("alvarez" > "boop") { cout << "a"; }
-	else if ("boop" > "aabba") { cout << "b"; }
 	adminMode adminMode[20];
 	cout << "Welcome to Employee Database" << endl
 		<< "Select User type" << endl
