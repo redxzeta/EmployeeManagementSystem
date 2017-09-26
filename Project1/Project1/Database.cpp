@@ -5,23 +5,15 @@
 #include <sstream>
 #include <stdlib.h>
 #include "sort.h"
+#include "adminMode.h"
 using namespace std;
 
-struct adminMode {
-	int id;
-	string firstName;
-	string lastName;
-	string email;
-	string number;
-
-
-};
 
 int checkNextAvailableID(struct adminMode adminMode[20], int id);
 
-void assignID(struct adminMode adminMode[20]);
-
 void readFile(string fileName, struct adminMode adminMode[20]);
+
+void printDetails(struct adminMode adminMode[]);
 
 int main() {
 
@@ -41,12 +33,12 @@ int main() {
 		int id = 0;
 		cout << "Enter Admin pw" << endl;
 		getline(cin, adminPassword);
-		
+
 		while (adminSelection != "5") {
 			cout << endl << "1. List of Employees\n2. Add New Employee\n3. Edit Existing Employee\n4. Terminate Employee\n5. Exit" << endl;
 			getline(cin, adminSelection);
 			system("CLS");
-			id = checkNextAvailableID(adminMode, id); cout << id;
+			id = checkNextAvailableID(adminMode, id);
 			if (adminSelection == "1") {
 				cout << "ID\tfirstname\tlastname\tEmail\t\t\tPhone Number\n";
 				for (int i = 0; i < 20; i++) {
@@ -54,22 +46,23 @@ int main() {
 						<< "\t\t" << adminMode[i].email << "\t\t" << adminMode[i].number << endl;
 				}
 			}
-			else if (id == -1) {
-				cout << "No available ID"; cin.get();
-			}
 
 			else if (adminSelection == "2") {
-				
-				cout << "New Employee ID: " << id << endl;
-				cout << "Enter First Name" << endl;
-				getline(cin, adminMode[id].firstName);
-				cout << "Enter Last Name" << endl;
-				getline(cin, adminMode[id].lastName);
-				cout << "Enter email address" << endl;
-				getline(cin, adminMode[id].email);
-				cout << "Enter phone number" << endl;
-				getline(cin, adminMode[id].number);
-				id++;
+				if (id == -1) {
+					cout << "No available ID"; cin.get();
+				}
+				else {
+					cout << "New Employee ID: " << id << endl;
+					cout << "Enter First Name" << endl;
+					getline(cin, adminMode[id].firstName);
+					cout << "Enter Last Name" << endl;
+					getline(cin, adminMode[id].lastName);
+					cout << "Enter email address" << endl;
+					getline(cin, adminMode[id].email);
+					cout << "Enter phone number" << endl;
+					getline(cin, adminMode[id].number);
+					id++;
+				}
 			}
 			else if (adminSelection == "3") {
 				cout << "Enter existing ID";
@@ -94,6 +87,7 @@ int main() {
 			}
 
 		}
+		printDetails(adminMode);
 	}
 	else if (selection == "2") {
 
@@ -132,4 +126,18 @@ void readFile(string fileName, struct adminMode adminMode[20]) {
 	}
 
 }
+
+void printDetails(struct adminMode adminMode[]) {
+	cout << endl;
+	ofstream output("test.txt");
+	for (int j = 0; j < 20; j++)
+	{
+		output << adminMode[j].id << " " << adminMode[j].firstName << " " << adminMode[j].lastName << " "
+			<< adminMode[j].email << " " << adminMode[j].number << endl;
+
+	}
+
+}
+
+
 
