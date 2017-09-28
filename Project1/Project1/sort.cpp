@@ -23,9 +23,15 @@ void sort::sortAZ(struct adminMode adminMode[20]) {
 		string test[20];
 		string key;
 		int i, j;
-
-		for (int a = 0; a < 20; a++) {
-			test[a] = adminMode[a].firstName;
+		if (selection == 2 || selection == 3) {
+			for (int a = 0; a < 20; a++) {
+				test[a] = adminMode[a].firstName;
+			}
+		}
+		else if (selection == 4 || selection == 5) {
+			for (int a = 0; a < 20; a++) {
+				test[a] = adminMode[a].lastName;
+			}
 		}
 
 		for (i = 1; i < 20; i++)
@@ -40,29 +46,44 @@ void sort::sortAZ(struct adminMode adminMode[20]) {
 			test[j + 1] = key;
 
 		}
-		int counter = 0;
-		for (int x = 0; x < 20; x++) {
+		if (selection % 2 == 0) {
+			for (int x = 0; x < 20; x++) {
 
-			for (int y = 0; y < 20; y++) {
-				if (test[x] == adminMode[y].firstName) {
-					cout << adminMode[y].id << "\t" << adminMode[y].firstName << "\t\t" << adminMode[y].lastName
-						<< "\t\t" << adminMode[y].email << "\t\t" << adminMode[y].number << endl;
+				for (int y = 0; y < 20; y++) {
+					if (test[x] == adminMode[y].firstName || test[x] == adminMode[y].lastName) {
+						cout << adminMode[y].id << "\t" << adminMode[y].firstName << "\t\t" << adminMode[y].lastName
+							<< "\t\t" << adminMode[y].email << "\t\t" << adminMode[y].number << endl;
+					}
+
 				}
 			}
 		}
+		else {
+			for (int x = 19; x > 0; x--) {
+				for (int y = 0; y < 20; y++) {
+					if (test[x] == adminMode[y].firstName || test[x] == adminMode[y].lastName) {
+						cout << adminMode[y].id << "\t" << adminMode[y].firstName << "\t\t" << adminMode[y].lastName
+							<< "\t\t" << adminMode[y].email << "\t\t" << adminMode[y].number << endl;
+					}
 
+				}
+			}
+		}
 	}
 
 }
 
 
 
+
+
 void sort::userSelection(int &selection) {
-	cout << "Sort By: " << endl << "First Name" << endl << "Last Name" << endl;
+	cout << "Sort By: " << endl << "1. Largest ID"
+		<< endl << "2. First Name A-Z" << endl << "3. Firstname Z-A"
+		<< endl << "4. Last Name A-Z" << endl << "5. Last Name Z-A" << endl;
 	string input;
-	int butt;
 	getline(cin, input);
-	selection=stoi(input);
+	selection = stoi(input);
 
 }
 
