@@ -26,6 +26,7 @@ int main() {
 	getline(cin, selection);
 	string adminPassword;
 	string employeePassword;
+	string existingID;
 	string adminSelection;
 	int employeeID = 0;
 
@@ -67,9 +68,9 @@ int main() {
 				}
 			}
 			else if (adminSelection == "3") {
-				cout << "Enter existing ID";
-				cin >> id;
-
+				cout << "Enter existing ID" << endl;
+				getline(cin, existingID);
+				id = stoi(existingID);
 				cout << "Enter First Name" << endl;
 				getline(cin, adminMode[id].firstName);
 				cout << "Enter Last Name" << endl;
@@ -81,7 +82,7 @@ int main() {
 			}
 			else if (adminSelection == "4") {
 				cout << "Enter existing ID";
-				cin >> id;
+			
 				adminMode[id].firstName = "N/A";
 				adminMode[id].lastName = "N/A";
 				adminMode[id].email = "N/A";
