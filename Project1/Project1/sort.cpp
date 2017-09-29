@@ -2,7 +2,7 @@
 #include <string>
 #include <iostream>
 #include "adminMode.h"
-#include <stdlib.h>     /* atoi */
+#include <stdlib.h>     
 sort::sort()
 {
 
@@ -72,10 +72,6 @@ void sort::sortAZ(struct adminMode adminMode[20]) {
 	}
 
 }
-
-
-
-
 
 void sort::userSelection(int &selection) {
 	cout << "Sort By: " << endl << "1. Largest ID"
